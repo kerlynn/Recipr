@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Recipr</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <div class="header">
+          <div class="container">
+            <h1>Awesome Food Recipe Blog</h1>
+            <p>Add Awesome Recipes~</p>
+          </div>
+        </div>
+
+        <h2>Seach Recipe</h2>
+
+        <%= form_tag("recipes/", method: "get" ) do %>   <%= label_tag(:id,
+        "Search for:" ) %>   <%= text_field_tag(:id) %>   <%=
+        submit_tag("Search") %> <% end %>
+
+        <h2>Upload recipe</h2>
+        <%= form_tag("recipes/new", method: "post" ) do %>   <%=
+        label_tag(:title, "Title:" ) %>   <%= text_field_tag(:title) %>   <%=
+        label_tag(:content, "Content:" ) %>   <%= text_field_tag(:content) %>
+          <%= submit_tag("Upload") %> <% end %>
+
+        <h1>All recipes</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Content</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%- @recipe.each do |recipe| -%>
+            <tr>
+              <td><%= recipe.title %></td>
+              <td><%= recipe.content %></td>
+            </tr>
+            <%- end -%>
+          </tbody>
+        </table>
+        <div class="container">
+          <div class="recipes"></div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-10">
+              <p>Designed and Developed by Kerlynn</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style type="text/css">
+  div.header {
+    background-color: #d4f1f4;
+    height: 100px;
+    padding: 20px;
+  }
+  body {
+    background-color: #ffffff;
+    height: 100%;
+    padding: 25px;
+  }
+
+  div.actions {
+    background-color: #ffffff;
+    height: 75px;
+    padding: 15px;
+  }
+
+  table, th, td {
+    padding: 10px;
+  }
+
+  table {
+    border: 1px solid;
+  }
+</style>

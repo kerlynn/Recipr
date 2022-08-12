@@ -1,0 +1,3386 @@
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:21:08 +0800
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20220812091847_create_recipes.rb
+
+
+):
+  
+activerecord (7.0.3.1) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.3.1) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.3.1) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.3.1) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.3.1) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.3.1) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3.1) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3.1) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3.1) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3.1) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3.1) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3.1) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3.1) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRecipes (20220812091847)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220812091847"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-08-12 09:21:40.132252"], ["updated_at", "2022-08-12 09:21:40.132252"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:22:09 +0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/kiwi/.rvm/gems/ruby-3.0.3/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/kiwi/.rvm/gems/ruby-3.0.3/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.9ms | Allocations: 750)
+Completed 200 OK in 9ms (Views: 2.4ms | ActiveRecord: 0.0ms | Allocations: 7008)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:24:35 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html within layouts/application
+  Rendered recipes/index.html within layouts/application (Duration: 0.3ms | Allocations: 136)
+  Rendered layout layouts/application.html.erb (Duration: 1029.9ms | Allocations: 97415)
+Completed 200 OK in 1035ms (Views: 1031.1ms | ActiveRecord: 0.3ms | Allocations: 100666)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:29:25 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html within layouts/application
+  Rendered recipes/index.html within layouts/application (Duration: 1.5ms | Allocations: 138)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 3056)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.0ms | Allocations: 4295)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:29:35 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html within layouts/application
+  Rendered recipes/index.html within layouts/application (Duration: 0.6ms | Allocations: 137)
+  Rendered layout layouts/application.html.erb (Duration: 16.5ms | Allocations: 3045)
+Completed 200 OK in 20ms (Views: 18.6ms | ActiveRecord: 0.0ms | Allocations: 4286)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:30:27 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html within layouts/application
+  Rendered recipes/index.html within layouts/application (Duration: 0.4ms | Allocations: 137)
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | Allocations: 3027)
+Completed 200 OK in 19ms (Views: 18.3ms | ActiveRecord: 0.0ms | Allocations: 4253)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:32:28 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html within layouts/application
+  Rendered recipes/index.html within layouts/application (Duration: 0.6ms | Allocations: 138)
+  Rendered layout layouts/application.html.erb (Duration: 13.4ms | Allocations: 14594)
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 0.3ms | Allocations: 17558)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:34:07 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html within layouts/application
+  Rendered recipes/index.html within layouts/application (Duration: 0.3ms | Allocations: 137)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 14582)
+Completed 200 OK in 13ms (Views: 9.9ms | ActiveRecord: 0.3ms | Allocations: 17538)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:34:08 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html within layouts/application
+  Rendered recipes/index.html within layouts/application (Duration: 0.1ms | Allocations: 19)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 2401)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.0ms | Allocations: 2800)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:35:21 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html within layouts/application
+  Rendered recipes/index.html within layouts/application (Duration: 2.4ms | Allocations: 138)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 3021)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.0ms | Allocations: 4207)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:35:23 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html within layouts/application
+  Rendered recipes/index.html within layouts/application (Duration: 0.0ms | Allocations: 19)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 2425)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 2823)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:35:37 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html within layouts/application
+  Rendered recipes/index.html within layouts/application (Duration: 0.8ms | Allocations: 137)
+  Rendered layout layouts/application.html.erb (Duration: 22.8ms | Allocations: 3029)
+Completed 200 OK in 28ms (Views: 26.0ms | ActiveRecord: 0.0ms | Allocations: 4215)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:35:56 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html within layouts/application
+  Rendered recipes/index.html within layouts/application (Duration: 0.5ms | Allocations: 138)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 3027)
+Completed 200 OK in 20ms (Views: 14.9ms | ActiveRecord: 0.0ms | Allocations: 4255)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:36:40 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:3
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 891)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 3783)
+Completed 200 OK in 14ms (Views: 9.1ms | ActiveRecord: 0.3ms | Allocations: 5008)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:36:41 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:3
+  Rendered recipes/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 554)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 2943)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.1ms | Allocations: 3339)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:36:47 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  Rendered recipes/index.html.erb within layouts/application (Duration: 17.4ms | Allocations: 8046)
+  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 8146)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms | Allocations: 9312)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `recipe' for #<ActionView::Base:0x00000000015e00>
+Did you mean?  @recipe):
+    1: <h1>hi there</h1>
+    2: <body>
+    3:   <td><% recipe.index %></td>
+    4: </body>
+  
+app/views/recipes/index.html.erb:3
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:36:56 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:3
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 787)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 3695)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.1ms | Allocations: 4916)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:37:57 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1384)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1472)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 4045)
+
+
+  
+ActionView::Template::Error (undefined method `index' for nil:NilClass):
+    1: <h1>hi there</h1>
+    2: <body>
+    3:   <td><% @recipe.index %></td>
+    4: </body>
+  
+app/views/recipes/index.html.erb:3
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:38:05 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  Rendered recipes/index.html.erb within layouts/application (Duration: 9.9ms | Allocations: 4245)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 4333)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms | Allocations: 5516)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `recipe' for #<ActionView::Base:0x00000000019cf8>):
+    1: <h1>hi there</h1>
+    2: <body>
+    3:   <td><% recipe.index %></td>
+    4: </body>
+  
+app/views/recipes/index.html.erb:3
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:38:06 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  Rendered recipes/index.html.erb within layouts/application (Duration: 13.6ms | Allocations: 4059)
+  Rendered layout layouts/application.html.erb (Duration: 14.0ms | Allocations: 4141)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms | Allocations: 4505)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `recipe' for #<ActionView::Base:0x00000000019fc8>):
+    1: <h1>hi there</h1>
+    2: <body>
+    3:   <td><% recipe.index %></td>
+    4: </body>
+  
+app/views/recipes/index.html.erb:3
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:38:15 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:3
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 854)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 15310)
+Completed 200 OK in 16ms (Views: 12.2ms | ActiveRecord: 0.5ms | Allocations: 18254)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:57:03 +0800
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/kiwi/github/Recipr/Recipr/app/controllers/recipes_controller.rb:8: syntax error, unexpected ','
+    Recipe.create!(title: , content:)
+                          ^
+/Users/kiwi/github/Recipr/Recipr/app/controllers/recipes_controller.rb:16: syntax error, unexpected ','
+...Recipe.find(id).update(title: , content:)
+...                              ^
+/Users/kiwi/github/Recipr/Recipr/app/controllers/recipes_controller.rb:23: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/recipes_controller.rb:8: syntax error, unexpected ','
+app/controllers/recipes_controller.rb:16: syntax error, unexpected ','
+app/controllers/recipes_controller.rb:23: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/recipes_controller.rb:8: syntax error, unexpected ','
+app/controllers/recipes_controller.rb:16: syntax error, unexpected ','
+app/controllers/recipes_controller.rb:23: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/recipes_controller.rb:8: syntax error, unexpected ','
+app/controllers/recipes_controller.rb:16: syntax error, unexpected ','
+app/controllers/recipes_controller.rb:23: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:57:30 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:3
+  Rendered recipes/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 3873)
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 3963)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.6ms | Allocations: 9707)
+
+
+  
+ActionView::Template::Error (undefined method `to_model' for #<ActiveRecord::Relation []>
+Did you mean?  to_xml):
+    4: 
+    5:   <h1>Upload Recipe</h1>
+    6: 
+    7: <%= form_with model: @recipe, method: :post, local: true do |f| %>
+    8: 
+    9:   <%= f.text_field :title %>
+   10:   <%= f.text_area :content %>
+  
+app/views/recipes/index.html.erb:7
+Started GET "/" for 127.0.0.1 at 2022-08-12 17:58:33 +0800
+  
+ArgumentError (Missing :controller key on routes definition, please check your routes.):
+  
+config/routes.rb:6:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/" for 127.0.0.1 at 2022-08-12 18:05:43 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  Rendered recipes/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 528)
+  Rendered layout layouts/application.html.erb (Duration: 35.5ms | Allocations: 36112)
+Completed 200 OK in 41ms (Views: 37.3ms | ActiveRecord: 0.4ms | Allocations: 39106)
+
+
+Started GET "/?id=1&commit=Search" for 127.0.0.1 at 2022-08-12 18:05:46 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"1", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  Rendered recipes/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 188)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 2567)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 2970)
+
+
+Started GET "/?id=1&commit=Search" for 127.0.0.1 at 2022-08-12 18:07:54 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"1", "commit"=>"Search"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1202)
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 15282)
+Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 0.3ms | Allocations: 18247)
+
+
+Started POST "/new" for 127.0.0.1 at 2022-08-12 18:07:59 +0800
+  
+ActionController::RoutingError (No route matches [POST] "/new"):
+  
+Started GET "/?id=1&commit=Search" for 127.0.0.1 at 2022-08-12 18:07:59 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"1", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  Rendered recipes/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 723)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 3065)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 3486)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:08:02 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 691)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 2913)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.0ms | Allocations: 3276)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:08:41 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1891)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 4508)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.7ms | Allocations: 5698)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:08:43 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1242)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 3464)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.2ms | Allocations: 3860)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:08:56 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 3516)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 3604)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.1ms | Allocations: 4751)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<Enumerator: []:index>):
+    14:   <%= submit_tag("submit") %>
+    15: <% end %>
+    16: 
+    17: <%= @recipe.index.title%>
+  
+app/views/recipes/index.html.erb:17
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:09:01 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1832)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 4465)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.1ms | Allocations: 5677)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:09:45 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1899)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 4532)
+Completed 200 OK in 13ms (Views: 10.5ms | ActiveRecord: 0.1ms | Allocations: 5751)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:09:50 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1905)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 4522)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.1ms | Allocations: 5740)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:10:15 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  [1m[36mRecipe Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 3051)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 3139)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.6ms | Allocations: 6664)
+
+
+  
+ActionView::Template::Error (undefined method `index' for 0:Integer):
+    14:   <%= submit_tag("submit") %>
+    15: <% end %>
+    16: 
+    17: <%= @recipe.index%>
+    18: 
+    19: <% @recipe.each do |recipe| %>                    
+    20:   <td><%= title %><td>
+  
+app/views/recipes/index.html.erb:17
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:10:29 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  [1m[36mRecipe Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1416)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 1505)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.1ms | Allocations: 3200)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check 
+
+<%= form_tag("/", method: "get") do %>
+  <%= label_tag(:id, "Search for:") %>
+  <%= text_field_tag(:id) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<%= form_tag("/new", method: "post") do %>
+  <%= label_tag(:title, "Title:") %>
+  <%= text_field_tag(:title) %>
+  <%= label_tag(:content, "Content:") %>
+  <%= text_field_tag(:content) %>
+  <%= submit_tag("submit") %>
+<% end %>
+
+<%= @recipe.index%>
+
+<%# <% @recipe.each do |recipe| %>                    
+  <td><%= title %><td>
+  <td><%= content %><td>
+<% end %> %>
+
+
+):
+1:    
+2:    
+3:    <%= form_tag("/", method: "get") do %>
+4:      <%= label_tag(:id, "Search for:") %>
+5:      <%= text_field_tag(:id) %>
+6:      <%= submit_tag("Search") %>
+7:    <% end %>
+8:    
+9:    <%= form_tag("/new", method: "post") do %>
+10:      <%= label_tag(:title, "Title:") %>
+11:      <%= text_field_tag(:title) %>
+12:      <%= label_tag(:content, "Content:") %>
+13:      <%= text_field_tag(:content) %>
+14:      <%= submit_tag("submit") %>
+15:    <% end %>
+16:    
+17:    <%= @recipe.index%>
+18:    
+19:    <%# <% @recipe.each do |recipe| %>                    
+20:      <td><%= title %><td>
+21:      <td><%= content %><td>
+22:    <% end %> %>
+  
+app/views/recipes/index.html.erb:26: syntax error, unexpected `end', expecting end-of-input
+app/views/recipes/index.html.erb:26: syntax error, unexpected `end', expecting end-of-input
+app/views/recipes/index.html.erb:26: syntax error, unexpected `end', expecting end-of-input
+app/views/recipes/index.html.erb:26: syntax error, unexpected `end', expecting end-of-input
+app/views/recipes/index.html.erb:26: syntax error, unexpected `end', expecting end-of-input
+app/views/recipes/index.html.erb:26: syntax error, unexpected `end', expecting end-of-input
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:10:37 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  [1m[36mRecipe Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 3094)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 3182)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.1ms | Allocations: 4868)
+
+
+  
+ActionView::Template::Error (undefined method `index' for 0:Integer):
+    14:   <%= submit_tag("submit") %>
+    15: <% end %>
+    16: 
+    17: <%= @recipe.index%>
+    18: 
+    19: <% @recipe.each do |recipe| %>                    
+    20:   <td><%= title %><td>
+  
+app/views/recipes/index.html.erb:17
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRecipe Create (1.4ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "a"], ["content", "a"], ["created_at", "2022-08-12 10:12:10.785049"], ["updated_at", "2022-08-12 10:12:10.785049"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:12:53 +0800
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 14.5ms | Allocations: 11802)
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | Allocations: 11911)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.6ms | Allocations: 19152)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `title' for #<ActionView::Base:0x0000000000b068>):
+    17: <%= @recipe.index%>
+    18: 
+    19: <% @recipe.each do |recipe| %>                    
+    20:   <td><%= title %><td>
+    21:   <td><%= content %><td>
+    22: <% end %>
+  
+app/views/recipes/index.html.erb:20
+app/views/recipes/index.html.erb:19
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:13:09 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1848)
+  Rendered layout layouts/application.html.erb (Duration: 38.1ms | Allocations: 37206)
+Completed 200 OK in 42ms (Views: 40.7ms | ActiveRecord: 0.1ms | Allocations: 38473)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:13:10 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1257)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 3480)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.2ms | Allocations: 3887)
+
+
+Started POST "/new" for 127.0.0.1 at 2022-08-12 18:13:20 +0800
+  
+ActionController::RoutingError (No route matches [POST] "/new"):
+  
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:13:20 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1350)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 3689)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.1ms | Allocations: 4116)
+
+
+Started POST "/new" for 127.0.0.1 at 2022-08-12 18:13:27 +0800
+  
+ActionController::RoutingError (No route matches [POST] "/new"):
+  
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:13:27 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 6.8ms | Allocations: 1270)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 3502)
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.1ms | Allocations: 3867)
+
+
+Started POST "/new" for 127.0.0.1 at 2022-08-12 18:13:47 +0800
+  
+ActionController::RoutingError (No route matches [POST] "/new"):
+  
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:13:47 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 2678)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 16647)
+Completed 200 OK in 15ms (Views: 11.9ms | ActiveRecord: 0.7ms | Allocations: 19271)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:13:52 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1245)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 3469)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.3ms | Allocations: 3864)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:14:21 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1860)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 4477)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.1ms | Allocations: 5678)
+
+
+Started POST "/recipe/new" for 127.0.0.1 at 2022-08-12 18:14:26 +0800
+  
+ActionController::RoutingError (uninitialized constant RecipeController
+Did you mean?  RecipesController):
+  
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:14:26 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1255)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 3493)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.1ms | Allocations: 3889)
+
+
+Started POST "/recipe/new" for 127.0.0.1 at 2022-08-12 18:15:12 +0800
+  
+ActionController::RoutingError (No route matches [POST] "/recipe/new"):
+  
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:15:12 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2700)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 16669)
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 0.5ms | Allocations: 19273)
+
+
+Started POST "/recipe/new" for 127.0.0.1 at 2022-08-12 18:15:25 +0800
+  
+ActionController::RoutingError (No route matches [POST] "/recipe/new"):
+  
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:15:25 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2712)
+  Rendered layout layouts/application.html.erb (Duration: 29.2ms | Allocations: 16681)
+Completed 200 OK in 36ms (Views: 33.2ms | ActiveRecord: 0.7ms | Allocations: 19285)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:15:27 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 15.9ms | Allocations: 1252)
+  Rendered layout layouts/application.html.erb (Duration: 18.2ms | Allocations: 3483)
+Completed 200 OK in 22ms (Views: 20.6ms | ActiveRecord: 0.1ms | Allocations: 3879)
+
+
+Started POST "/recipe/new" for 127.0.0.1 at 2022-08-12 18:15:30 +0800
+  
+ActionController::RoutingError (No route matches [POST] "/recipe/new"):
+  
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:15:30 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1272)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 3494)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.1ms | Allocations: 3855)
+
+
+Started POST "/recipe/new" for 127.0.0.1 at 2022-08-12 18:15:50 +0800
+  
+ActionController::RoutingError (No route matches [POST] "/recipe/new"):
+  
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:15:50 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1264)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 3502)
+Completed 200 OK in 6ms (Views: 3.3ms | ActiveRecord: 0.1ms | Allocations: 3863)
+
+
+Started POST "/recipe/new" for 127.0.0.1 at 2022-08-12 18:16:21 +0800
+  
+ActionController::RoutingError (No route matches [POST] "/recipe/new"):
+  
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:16:21 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1839)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | Allocations: 4456)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.1ms | Allocations: 5587)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:16:27 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1876)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 4493)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.1ms | Allocations: 5711)
+
+
+Started POST "/recipes/new" for 127.0.0.1 at 2022-08-12 18:16:30 +0800
+Processing by RecipesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "title"=>"aa", "content"=>"aa", "commit"=>"submit"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 752)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 2)):
+  
+app/controllers/recipes_controller.rb:7:in `create'
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:18:04 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 2685)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 16654)
+Completed 200 OK in 13ms (Views: 10.2ms | ActiveRecord: 0.6ms | Allocations: 19256)
+
+
+Started POST "/recipes/new" for 127.0.0.1 at 2022-08-12 18:18:09 +0800
+Processing by RecipesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "title"=>"aa", "content"=>"aa", "commit"=>"submit"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 733)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 2)):
+  
+app/controllers/recipes_controller.rb:7:in `create'
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:18:29 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2665)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 16635)
+Completed 200 OK in 16ms (Views: 12.8ms | ActiveRecord: 0.7ms | Allocations: 19238)
+
+
+Started POST "/recipes/new" for 127.0.0.1 at 2022-08-12 18:18:32 +0800
+Processing by RecipesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "title"=>"aa", "content"=>"aa", "commit"=>"submit"}
+[31mUnpermitted parameters: :authenticity_token, :commit. Context: { controller: RecipesController, action: create, request: #<ActionDispatch::Request:0x0000000103614dc0>, params: {"authenticity_token"=>"[FILTERED]", "title"=>"aa", "content"=>"aa", "commit"=>"submit", "controller"=>"recipes", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:8:in `create'
+  [1m[36mRecipe Create (0.6ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "aa"], ["content", "aa"], ["created_at", "2022-08-12 10:18:32.940718"], ["updated_at", "2022-08-12 10:18:32.940718"]]
+  ↳ app/controllers/recipes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:8:in `create'
+No template found for RecipesController#create, rendering head :no_content
+Completed 204 No Content in 11ms (ActiveRecord: 1.6ms | Allocations: 3777)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:19:06 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1283)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 3505)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.3ms | Allocations: 3894)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:19:07 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1286)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 3508)
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.3ms | Allocations: 3869)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:19:35 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1890)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 16004)
+Completed 200 OK in 15ms (Views: 11.5ms | ActiveRecord: 0.5ms | Allocations: 18944)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:19:37 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1206)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 3437)
+Completed 200 OK in 10ms (Views: 7.4ms | ActiveRecord: 0.5ms | Allocations: 3832)
+
+
+Started POST "/recipes/new" for 127.0.0.1 at 2022-08-12 18:19:44 +0800
+Processing by RecipesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "title"=>"aa", "content"=>"aa", "commit"=>"submit"}
+[31mUnpermitted parameters: :authenticity_token, :commit. Context: { controller: RecipesController, action: create, request: #<ActionDispatch::Request:0x0000000103275390>, params: {"authenticity_token"=>"[FILTERED]", "title"=>"aa", "content"=>"aa", "commit"=>"submit", "controller"=>"recipes", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:11:in `create'
+  [1m[36mRecipe Create (0.7ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "aa"], ["content", "aa"], ["created_at", "2022-08-12 10:19:44.626625"], ["updated_at", "2022-08-12 10:19:44.626625"]]
+  ↳ app/controllers/recipes_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:11:in `create'
+No template found for RecipesController#create, rendering head :no_content
+Completed 204 No Content in 14ms (ActiveRecord: 2.4ms | Allocations: 3797)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:19:48 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:17
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1224)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 3446)
+Completed 200 OK in 11ms (Views: 8.7ms | ActiveRecord: 0.3ms | Allocations: 3806)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:20:28 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:20
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1813)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 4430)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.1ms | Allocations: 5611)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:20:55 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:21
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1819)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 4436)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.1ms | Allocations: 5654)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:21:20 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes"):
+  
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:21:20 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:21
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1224)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 3446)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.1ms | Allocations: 3842)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:21:57 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:21
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1480)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 15449)
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.4ms | Allocations: 18052)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:21:59 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes"):
+  
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:21:59 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:21
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1221)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 3459)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.1ms | Allocations: 3855)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:29:56 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes"):
+  
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:29:56 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: index, request: #<ActionDispatch::Request:0x0000000108126a98>, params: {"id"=>"a", "commit"=>"Search", "controller"=>"recipes", "action"=>"index"} }[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:22
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1867)
+  Rendered layout layouts/application.html.erb (Duration: 12.8ms | Allocations: 16036)
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.5ms | Allocations: 18897)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:29:59 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes"):
+  
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:29:59 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: index, request: #<ActionDispatch::Request:0x000000010868c078>, params: {"id"=>"a", "commit"=>"Search", "controller"=>"recipes", "action"=>"index"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:22
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1218)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 3432)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.1ms | Allocations: 3949)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:31:07 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: index, request: #<ActionDispatch::Request:0x0000000105060a58>, params: {"id"=>"a", "commit"=>"Search", "controller"=>"recipes", "action"=>"index"} }[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.erb:22
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1864)
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | Allocations: 16033)
+Completed 200 OK in 21ms (Views: 15.6ms | ActiveRecord: 0.6ms | Allocations: 19158)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:31:10 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000012809d930>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 2.4ms | Allocations: 154)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 2721)
+Completed 200 OK in 18ms (Views: 10.1ms | ActiveRecord: 0.3ms | Allocations: 5165)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:31:44 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000010365cc38>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1576)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1664)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.1ms | Allocations: 3494)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    1: <h1>show</h1>
+    2: 
+    3: <%= @recipe.title%>
+    4: <%= @recipe.content%>
+  
+app/views/recipes/show.html.erb:3
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:33:03 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000011fc165e0>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1593)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 1681)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.3ms | Allocations: 3620)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    1: <h1>show</h1>
+    2: 
+    3: 
+    4: <%- @recipe.each do |recipe| -%>
+    5:   <td><%= recipe.title %></td>
+    6:   <td><%= recipe.content %></td>
+    7: <%- end -%>
+  
+app/views/recipes/show.html.erb:4
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:33:10 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x0000000107839070>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1365)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 1447)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms | Allocations: 2561)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    1: <h1>show</h1>
+    2: 
+    3: 
+    4: <%- @recipe.each do |recipe| -%>
+    5:   <td><%= recipe.title %></td>
+    6:   <td><%= recipe.content %></td>
+    7: <%- end -%>
+  
+app/views/recipes/show.html.erb:4
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:34:07 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: index, request: #<ActionDispatch::Request:0x00000001083551e8>, params: {"id"=>"a", "commit"=>"Search", "controller"=>"recipes", "action"=>"index"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:23
+  Rendered recipes/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 3157)
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 5779)
+Completed 200 OK in 21ms (Views: 18.2ms | ActiveRecord: 0.4ms | Allocations: 7087)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:36:04 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: index, request: #<ActionDispatch::Request:0x0000000108414570>, params: {"id"=>"a", "commit"=>"Search", "controller"=>"recipes", "action"=>"index"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:23
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1951)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 4557)
+Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 0.1ms | Allocations: 5897)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:36:05 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: index, request: #<ActionDispatch::Request:0x000000010849db18>, params: {"id"=>"a", "commit"=>"Search", "controller"=>"recipes", "action"=>"index"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:23
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1302)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 3516)
+Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 0.3ms | Allocations: 4034)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:36:27 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: index, request: #<ActionDispatch::Request:0x000000010854c2f8>, params: {"id"=>"a", "commit"=>"Search", "controller"=>"recipes", "action"=>"index"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:23
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1962)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 4568)
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 0.3ms | Allocations: 5868)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:36:55 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: index, request: #<ActionDispatch::Request:0x00000001085c7520>, params: {"id"=>"a", "commit"=>"Search", "controller"=>"recipes", "action"=>"index"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:29
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1974)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 4580)
+Completed 200 OK in 15ms (Views: 12.6ms | ActiveRecord: 0.2ms | Allocations: 5920)
+
+
+Started GET "/?id=a&commit=Search" for 127.0.0.1 at 2022-08-12 18:38:34 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"a", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: index, request: #<ActionDispatch::Request:0x00000001086e5718>, params: {"id"=>"a", "commit"=>"Search", "controller"=>"recipes", "action"=>"index"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1995)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 4620)
+Completed 200 OK in 13ms (Views: 11.1ms | ActiveRecord: 0.1ms | Allocations: 5961)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:39:56 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x0000000103106018>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1558)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 1646)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.1ms | Allocations: 3536)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    2: 
+    3: 
+    4: 
+    5:   <td><%= @recipe.title %></td>
+    6:   <td><%= @recipe.content %></td>
+  
+app/views/recipes/show.html.erb:5
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/?id=1&commit=Search" for 127.0.0.1 at 2022-08-12 18:42:47 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"1", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: index, request: #<ActionDispatch::Request:0x00000001055a95c8>, params: {"id"=>"1", "commit"=>"Search", "controller"=>"recipes", "action"=>"index"} }[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 3203)
+  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 17372)
+Completed 200 OK in 23ms (Views: 17.9ms | ActiveRecord: 0.9ms | Allocations: 20233)
+
+
+Started GET "/?id=1&commit=Search" for 127.0.0.1 at 2022-08-12 18:42:48 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"1", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: index, request: #<ActionDispatch::Request:0x00000001080652a8>, params: {"id"=>"1", "commit"=>"Search", "controller"=>"recipes", "action"=>"index"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1287)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 3501)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.2ms | Allocations: 4018)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:42:49 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x0000000103843128>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 975)
+
+
+Started GET "/?id=1&commit=Search" for 127.0.0.1 at 2022-08-12 18:44:12 +0800
+Processing by RecipesController#index as HTML
+  Parameters: {"id"=>"1", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: index, request: #<ActionDispatch::Request:0x00000001081d4760>, params: {"id"=>"1", "commit"=>"Search", "controller"=>"recipes", "action"=>"index"} }[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2670)
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 16525)
+Completed 200 OK in 20ms (Views: 15.9ms | ActiveRecord: 0.7ms | Allocations: 19305)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:44:14 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000010846e930>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.3ms | Allocations: 2246)
+
+
+  
+ActionView::MissingTemplate (Missing template /show with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/Users/kiwi/github/Recipr/Recipr/app/views"
+  * "/Users/kiwi/.rvm/gems/ruby-3.0.3/gems/actiontext-7.0.3.1/app/views"
+  * "/Users/kiwi/.rvm/gems/ruby-3.0.3/gems/actionmailbox-7.0.3.1/app/views"
+
+Did you mean?  recipes/show
+               rails/conductor/action_mailbox/inbound_emails/show
+               rails/conductor/action_mailbox/inbound_emails/new
+               rails/conductor/action_mailbox/inbound_emails/sources/new
+               layouts/rails/conductor
+               layouts/application):
+  
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 18:48:07 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 2740)
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | Allocations: 16697)
+Completed 200 OK in 22ms (Views: 17.2ms | ActiveRecord: 0.9ms | Allocations: 19395)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 18:48:07 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1287)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 3501)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.2ms | Allocations: 3932)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:48:10 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x00000001052e3848>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.3ms | Allocations: 4427)
+
+
+  
+NameError (undefined local variable or method `‘index’' for #<RecipesController:0x0000000003d090>
+Did you mean?  index):
+  
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 18:48:41 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 2000)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 4606)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.1ms | Allocations: 5817)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:48:44 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x00000001086c7ec0>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.1ms | Allocations: 4375)
+
+
+  
+NameError (undefined local variable or method `‘index’' for #<RecipesController:0x0000000003d450>
+Did you mean?  index):
+  
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 18:49:07 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 2734)
+  Rendered layout layouts/application.html.erb (Duration: 16.8ms | Allocations: 16711)
+Completed 200 OK in 21ms (Views: 17.3ms | ActiveRecord: 0.7ms | Allocations: 19406)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:49:10 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x0000000105094bc8>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 15.1ms | Allocations: 4251)
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 4333)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.3ms | Allocations: 5530)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `recipe' for #<ActionView::Base:0x00000000041348>):
+    2: 
+    3: 
+    4: 
+    5:   <td><%= recipe %></td>
+  
+app/views/recipes/show.html.erb:5
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 18:49:20 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1971)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 4593)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.1ms | Allocations: 5818)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:49:22 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x00000001081060b8>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 144)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 2534)
+Completed 200 OK in 11ms (Views: 8.0ms | ActiveRecord: 0.2ms | Allocations: 3689)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:50:00 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000010839d920>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 7.2ms | Allocations: 4242)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 4330)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.4ms | Allocations: 8123)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `result' for #<ActionView::Base:0x000000000452b8>
+Did you mean?  rescue):
+    2: 
+    3: 
+    4: 
+    5:   <td><%= result %></td>
+  
+app/views/recipes/show.html.erb:5
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:50:07 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000010804eff8>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 11.4ms | Allocations: 4100)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 4182)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.2ms | Allocations: 5293)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `result' for #<ActionView::Base:0x00000000045588>
+Did you mean?  rescue):
+    2: 
+    3: 
+    4: 
+    5:   <td><%= result %></td>
+  
+app/views/recipes/show.html.erb:5
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:51:41 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000010568cc60>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 7.5ms | Allocations: 4240)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 4328)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.6ms | Allocations: 8122)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `recipe' for #<ActionView::Base:0x00000000049458>):
+    2: 
+    3: 
+    4: 
+    5:   <% recipe.each do |recipe| %>
+    6:     <p><%= recipe.title %></p>
+    7: <% end %>
+  
+app/views/recipes/show.html.erb:5
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 18:56:00 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 3222)
+  Rendered layout layouts/application.html.erb (Duration: 15.2ms | Allocations: 17391)
+Completed 200 OK in 21ms (Views: 16.3ms | ActiveRecord: 0.9ms | Allocations: 20426)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:56:03 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x00000001056ef298>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1544)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 1626)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.3ms | Allocations: 2805)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    2: 
+    3: 
+    4: 
+    5:   <% @recipe.each do |recipe| %>
+    6:     <p><%= recipe.title %></p>
+    7: <% end %>
+  
+app/views/recipes/show.html.erb:5
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 18:56:13 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1989)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 4611)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.1ms | Allocations: 5835)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:56:16 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x0000000106084ab0>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1564)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 1646)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms | Allocations: 2771)
+
+
+  
+ActionView::Template::Error (undefined method `map' for nil:NilClass):
+    2: 
+    3: 
+    4: 
+    5:   <% @recipe.map do |recipe| %>
+    6:     <p><%= recipe.title %></p>
+    7: <% end %>
+  
+app/views/recipes/show.html.erb:5
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 18:56:35 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1977)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 4599)
+Completed 200 OK in 11ms (Views: 9.5ms | ActiveRecord: 0.2ms | Allocations: 5823)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:56:38 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x00000001082c61a0>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1550)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 1632)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms | Allocations: 2757)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    3: 
+    4: 
+    5:   <%# <% @recipe.map do |recipe| %> %>
+    6:     <p><%= @recipe.title %></p>
+    7: <%# <% end %> %>
+  
+app/views/recipes/show.html.erb:6
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 18:56:49 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 2734)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 16692)
+Completed 200 OK in 16ms (Views: 12.2ms | ActiveRecord: 0.6ms | Allocations: 19387)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:56:54 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000010511d3b0>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.3ms | Allocations: 3835)
+
+
+  
+NameError (undefined local variable or method `recipe' for #<RecipesController:0x00000000051e28>
+Did you mean?  @recipe):
+  
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 18:57:04 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 2664)
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 16520)
+Completed 200 OK in 15ms (Views: 11.8ms | ActiveRecord: 0.5ms | Allocations: 19212)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:57:06 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000013a4f21e0>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1384)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 1466)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms | Allocations: 2588)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    3: 
+    4: 
+    5:   <%# <% @recipe.map do |recipe| %> %>
+    6:     <p><%= @recipe.title %></p>
+    7: <%# <% end %> %>
+  
+app/views/recipes/show.html.erb:6
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 18:57:21 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1990)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 4612)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.1ms | Allocations: 5837)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:57:23 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x0000000103626250>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 181)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 2592)
+Completed 200 OK in 12ms (Views: 8.5ms | ActiveRecord: 0.2ms | Allocations: 3747)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:57:37 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x0000000103743520>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1547)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 1635)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.1ms | Allocations: 3446)
+
+
+  
+ActionView::Template::Error (undefined method `json' for nil:NilClass):
+    3: 
+    4: 
+    5: 
+    6:     <p><%= @recipe.json %></p>
+  
+app/views/recipes/show.html.erb:6
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 18:58:51 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1977)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 4599)
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 0.1ms | Allocations: 5852)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:58:53 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x00000001060d52d0>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 19.9ms | Allocations: 4374)
+  Rendered layout layouts/application.html.erb (Duration: 20.1ms | Allocations: 4466)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.2ms | Allocations: 5603)
+
+
+  
+ActionView::Template::Error ('nil' is not an ActiveModel-compatible object. It must implement :to_partial_path.):
+    3: 
+    4: 
+    5: 
+    6:  <%= render @recipe %>
+  
+app/views/recipes/show.html.erb:6
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 18:59:12 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1965)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 4587)
+Completed 200 OK in 18ms (Views: 14.5ms | ActiveRecord: 0.2ms | Allocations: 5839)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 18:59:14 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x00000001033eb990>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 12.6ms | Allocations: 4228)
+  Rendered layout layouts/application.html.erb (Duration: 13.0ms | Allocations: 4310)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.2ms | Allocations: 5433)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `recipe' for #<ActionView::Base:0x00000000056888>):
+    3: 
+    4: 
+    5: 
+    6:  <%= render recipe %>
+  
+app/views/recipes/show.html.erb:6
+app/controllers/recipes_controller.rb:16:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:02:35 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2734)
+  Rendered layout layouts/application.html.erb (Duration: 15.1ms | Allocations: 16691)
+Completed 200 OK in 19ms (Views: 16.0ms | ActiveRecord: 0.6ms | Allocations: 19385)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 19:02:37 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000010846f7e0>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:15:in `show'
+Completed 500 Internal Server Error in 13ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 3936)
+
+
+  
+NameError (undefined local variable or method `recipe' for #<RecipesController:0x0000000005a7f8>
+Did you mean?  @recipe):
+  
+app/controllers/recipes_controller.rb:17:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:02:49 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2734)
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | Allocations: 16691)
+Completed 200 OK in 16ms (Views: 12.6ms | ActiveRecord: 0.7ms | Allocations: 19385)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 19:02:52 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x00000001086bc458>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+Completed 500 Internal Server Error in 6ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1432)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/recipes_controller.rb:18:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:03:01 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 2746)
+  Rendered layout layouts/application.html.erb (Duration: 13.4ms | Allocations: 16704)
+Completed 200 OK in 17ms (Views: 13.9ms | ActiveRecord: 0.7ms | Allocations: 19399)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 19:03:03 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000010351e5d8>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+Security warning: an embedded <script> tag on another site requested protected JavaScript. If you know what you're doing, go ahead and disable forgery protection on this action to permit cross-origin JavaScript embedding.
+Completed 422 Unprocessable Entity in 5ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1393)
+
+
+  
+ActionController::InvalidCrossOriginRequest (Security warning: an embedded <script> tag on another site requested protected JavaScript. If you know what you're doing, go ahead and disable forgery protection on this action to permit cross-origin JavaScript embedding.):
+  
+actionpack (7.0.3.1) lib/action_controller/metal/request_forgery_protection.rb:311:in `verify_same_origin_request'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:400:in `block in make_lambda'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:247:in `block in halting'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:599:in `block in invoke_after'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:599:in `each'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:599:in `invoke_after'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:132:in `block in run_callbacks'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.3.1) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.3.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.3.1) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.3.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.3.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.3.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.3.1) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.3.1) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.3.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.3.1) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.3.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.3.1) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.3.1) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.3.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.3.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.3.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.3.1) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (7.0.3.1) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3.1) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3.1) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3.1) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3.1) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3.1) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3.1) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3.1) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:03:03 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1282)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 3512)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.1ms | Allocations: 3922)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 19:04:29 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000010364c518>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 6.7ms | Allocations: 4053)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 4141)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.4ms | Allocations: 7614)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `recipe' for #<ActionView::Base:0x00000000066788>):
+    3: 
+    4: 
+    5: 
+    6:  <%= render recipe %>
+  
+app/views/recipes/show.html.erb:6
+app/controllers/recipes_controller.rb:17:in `show'
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:04:39 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 3181)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 17351)
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.3ms | Allocations: 18622)
+
+
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 19:13:33 +0800
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/kiwi/github/Recipr/Recipr/app/controllers/recipes_controller.rb:17: syntax error, unexpected ':', expecting `end'
+    render: show
+          ^
+):
+  
+app/controllers/recipes_controller.rb:17: syntax error, unexpected ':', expecting `end'
+app/controllers/recipes_controller.rb:17: syntax error, unexpected ':', expecting `end'
+app/controllers/recipes_controller.rb:17: syntax error, unexpected ':', expecting `end'
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:13:43 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 6446)
+  Rendered layout layouts/application.html.erb (Duration: 52.3ms | Allocations: 41023)
+Completed 200 OK in 71ms (Views: 53.8ms | ActiveRecord: 1.3ms | Allocations: 46907)
+
+
+Started GET "/recipes/?id=&commit=Search" for 127.0.0.1 at 2022-08-12 19:13:44 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000011f608630>, params: {"id"=>"", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 195)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 2766)
+Completed 200 OK in 7ms (Views: 3.5ms | ActiveRecord: 0.1ms | Allocations: 5297)
+
+
+Started GET "/recipes/?id=&commit=Search" for 127.0.0.1 at 2022-08-12 19:16:39 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000011f67a050>, params: {"id"=>"", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 214)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 3075)
+Completed 200 OK in 14ms (Views: 10.2ms | ActiveRecord: 0.7ms | Allocations: 4956)
+
+
+Started GET "/recipes/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:16:39 +0800
+Started GET "/recipes/css/style.css" for 127.0.0.1 at 2022-08-12 19:16:39 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/style.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/bootstrap.min.css"):
+  
+Started GET "/recipes/?id=&commit=Search" for 127.0.0.1 at 2022-08-12 19:16:45 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000012a596c00>, params: {"id"=>"", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 215)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 3090)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 0.1ms | Allocations: 5082)
+
+
+Started GET "/recipes/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:16:45 +0800
+Started GET "/recipes/css/style.css" for 127.0.0.1 at 2022-08-12 19:16:45 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/style.css"):
+  
+Started GET "/recipes/?id=&commit=Search" for 127.0.0.1 at 2022-08-12 19:17:01 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000013fa740f0>, params: {"id"=>"", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 215)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 3094)
+Completed 200 OK in 7ms (Views: 5.3ms | ActiveRecord: 0.1ms | Allocations: 5073)
+
+
+Started GET "/recipes/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:17:01 +0800
+Started GET "/recipes/css/style.css" for 127.0.0.1 at 2022-08-12 19:17:01 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/style.css"):
+  
+Started GET "/recipes/" for 127.0.0.1 at 2022-08-12 19:17:07 +0800
+Processing by RecipesController#show as HTML
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 2424)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.1ms | Allocations: 3502)
+
+
+Started GET "/recipes/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:17:07 +0800
+Started GET "/recipes/css/style.css" for 127.0.0.1 at 2022-08-12 19:17:07 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/style.css"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:17:13 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:32
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1780)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 4010)
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.2ms | Allocations: 4475)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:20:46 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:88
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 2114)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 4736)
+Completed 200 OK in 21ms (Views: 18.2ms | ActiveRecord: 0.7ms | Allocations: 5949)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:20:46 +0800
+Started GET "/scripts/uuidv4.js" for 127.0.0.1 at 2022-08-12 19:20:46 +0800
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:20:46 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+Started GET "/scripts/recepie-app.js" for 127.0.0.1 at 2022-08-12 19:20:46 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/uuidv4.js"):
+  
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:20:46 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/recepie-app.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:20:46 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:22:21 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:88
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 2140)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 4762)
+Completed 200 OK in 18ms (Views: 14.7ms | ActiveRecord: 0.1ms | Allocations: 6013)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:22:21 +0800
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:22:21 +0800
+Started GET "/scripts/recepie-app.js" for 127.0.0.1 at 2022-08-12 19:22:21 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:22:21 +0800
+Started GET "/scripts/uuidv4.js" for 127.0.0.1 at 2022-08-12 19:22:21 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/recepie-app.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/uuidv4.js"):
+  
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:22:22 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:23:08 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:88
+  Rendered recipes/index.html.erb within layouts/application (Duration: 6.6ms | Allocations: 2139)
+  Rendered layout layouts/application.html.erb (Duration: 11.8ms | Allocations: 4761)
+Completed 200 OK in 18ms (Views: 15.8ms | ActiveRecord: 0.2ms | Allocations: 6010)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:23:08 +0800
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:23:08 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/scripts/recepie-app.js" for 127.0.0.1 at 2022-08-12 19:23:08 +0800
+Started GET "/scripts/uuidv4.js" for 127.0.0.1 at 2022-08-12 19:23:08 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:23:08 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/recepie-app.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/uuidv4.js"):
+  
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:23:08 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:23:41 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:88
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 2130)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 4752)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.1ms | Allocations: 6002)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:23:41 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:23:41 +0800
+Started GET "/scripts/uuidv4.js" for 127.0.0.1 at 2022-08-12 19:23:41 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/scripts/recepie-app.js" for 127.0.0.1 at 2022-08-12 19:23:41 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:23:41 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/recepie-app.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/uuidv4.js"):
+  
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:23:41 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:23:43 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:88
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1288)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 3518)
+Completed 200 OK in 10ms (Views: 7.4ms | ActiveRecord: 0.2ms | Allocations: 3951)
+
+
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:23:43 +0800
+Started GET "/scripts/recepie-app.js" for 127.0.0.1 at 2022-08-12 19:23:43 +0800
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:23:43 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:23:43 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/recepie-app.js"):
+  
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:23:43 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+Started GET "/scripts/uuidv4.js" for 127.0.0.1 at 2022-08-12 19:23:43 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/uuidv4.js"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:25:33 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:103
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 2155)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 4777)
+Completed 200 OK in 20ms (Views: 17.3ms | ActiveRecord: 0.1ms | Allocations: 5989)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:25:33 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:25:33 +0800
+Started GET "/scripts/uuidv4.js" for 127.0.0.1 at 2022-08-12 19:25:33 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:25:33 +0800
+Started GET "/scripts/recepie-app.js" for 127.0.0.1 at 2022-08-12 19:25:33 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/uuidv4.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/recepie-app.js"):
+  
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:25:34 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:27:26 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:101
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2180)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 4802)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.1ms | Allocations: 6051)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:27:26 +0800
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:27:26 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:27:26 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:27:26 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:27:51 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:101
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2169)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 4791)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.1ms | Allocations: 6040)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:27:51 +0800
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:27:51 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:27:51 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:27:51 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:28:01 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:101
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 2163)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 4785)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.2ms | Allocations: 6034)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:28:01 +0800
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:28:01 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:28:01 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:28:02 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:30:46 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:113
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 2153)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 4775)
+Completed 200 OK in 13ms (Views: 11.2ms | ActiveRecord: 0.2ms | Allocations: 6024)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:30:46 +0800
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:30:46 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:30:46 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:30:46 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:31:35 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:124
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 2865)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 5487)
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.1ms | Allocations: 6736)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:31:35 +0800
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:31:35 +0800
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:31:35 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:31:35 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:31:51 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:114
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 2180)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 4802)
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.1ms | Allocations: 6051)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:31:51 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:31:51 +0800
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:31:51 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:31:51 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:32:28 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:95
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 2158)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 4780)
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.1ms | Allocations: 6029)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:32:28 +0800
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:32:28 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:32:28 +0800
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:32:28 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:32:40 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:95
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 2166)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 4788)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.1ms | Allocations: 6037)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:32:40 +0800
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:32:40 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:32:40 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:32:41 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:32:59 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:95
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 2185)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 4807)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.1ms | Allocations: 6056)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:32:59 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:32:59 +0800
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:32:59 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:32:59 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:33:04 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:95
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 2155)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 4777)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.1ms | Allocations: 6027)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:33:04 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:33:04 +0800
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:33:04 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:33:04 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:33:56 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:95
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2170)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 4792)
+Completed 200 OK in 14ms (Views: 11.5ms | ActiveRecord: 0.2ms | Allocations: 6041)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:33:56 +0800
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:33:56 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:33:56 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:33:56 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 19:34:46 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000012a360d50>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 1.6ms | Allocations: 220)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 3108)
+Completed 200 OK in 30ms (Views: 25.1ms | ActiveRecord: 0.1ms | Allocations: 5042)
+
+
+Started GET "/recipes/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:34:46 +0800
+Started GET "/recipes/css/style.css" for 127.0.0.1 at 2022-08-12 19:34:46 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/style.css"):
+  
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:34:48 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:34:48 +0800
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:34:48 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:34:49 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 19:35:46 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000011f1bcf90>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 1.9ms | Allocations: 304)
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 3177)
+Completed 200 OK in 19ms (Views: 14.0ms | ActiveRecord: 0.2ms | Allocations: 5159)
+
+
+Started GET "/recipes/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:35:46 +0800
+Started GET "/recipes/css/style.css" for 127.0.0.1 at 2022-08-12 19:35:46 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/style.css"):
+  
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 19:36:21 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000012a6df508>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 297)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 3148)
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.2ms | Allocations: 5125)
+
+
+Started GET "/recipes/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:36:22 +0800
+Started GET "/recipes/css/style.css" for 127.0.0.1 at 2022-08-12 19:36:22 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/style.css"):
+  
+Started GET "/recipes/?id=aa&commit=Search" for 127.0.0.1 at 2022-08-12 19:36:23 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"aa", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000012a6dece8>, params: {"id"=>"aa", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 40)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 2435)
+Completed 200 OK in 11ms (Views: 7.3ms | ActiveRecord: 0.2ms | Allocations: 3585)
+
+
+Started GET "/recipes/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:36:23 +0800
+Started GET "/recipes/css/style.css" for 127.0.0.1 at 2022-08-12 19:36:23 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/style.css"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:37:11 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:95
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 2179)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 4794)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.2ms | Allocations: 6023)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:37:12 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:37:12 +0800
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:37:12 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:37:12 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+Started GET "/recipes/?id=&commit=Search" for 127.0.0.1 at 2022-08-12 19:37:17 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000012802f228>, params: {"id"=>"", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 265)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 2679)
+Completed 200 OK in 13ms (Views: 7.4ms | ActiveRecord: 0.2ms | Allocations: 3837)
+
+
+Started GET "/recipes/css/style.css" for 127.0.0.1 at 2022-08-12 19:37:17 +0800
+Started GET "/recipes/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:37:17 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/style.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/bootstrap.min.css"):
+  
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:37:19 +0800
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:37:19 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:37:19 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:37:19 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+Started GET "/recipes/?id=&commit=Search" for 127.0.0.1 at 2022-08-12 19:37:20 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000012b550b50>, params: {"id"=>"", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 40)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 2457)
+Completed 200 OK in 10ms (Views: 6.6ms | ActiveRecord: 0.2ms | Allocations: 3482)
+
+
+Started GET "/recipes/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:37:20 +0800
+Started GET "/recipes/css/style.css" for 127.0.0.1 at 2022-08-12 19:37:20 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/style.css"):
+  
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:37:21 +0800
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:37:21 +0800
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:37:21 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:37:21 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+Started GET "/recipes/?id=&commit=Search" for 127.0.0.1 at 2022-08-12 19:37:28 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x000000012b2ae6b8>, params: {"id"=>"", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 40)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 2451)
+Completed 200 OK in 12ms (Views: 8.9ms | ActiveRecord: 0.2ms | Allocations: 3476)
+
+
+Started GET "/recipes/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:37:28 +0800
+Started GET "/recipes/css/style.css" for 127.0.0.1 at 2022-08-12 19:37:28 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/style.css"):
+  
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:37:29 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:37:30 +0800
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:37:30 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:37:30 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:38:06 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:43
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 2069)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 4691)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.1ms | Allocations: 5917)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:38:06 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:38:06 +0800
+Started GET "/scripts/jquery.js" for 127.0.0.1 at 2022-08-12 19:38:06 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+Started GET "/scripts/bootstrap.min.js" for 127.0.0.1 at 2022-08-12 19:38:06 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/jquery.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/scripts/bootstrap.min.js"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:43:45 +0800
+Processing by RecipesController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:43
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 2098)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 4720)
+Completed 200 OK in 17ms (Views: 9.7ms | ActiveRecord: 2.3ms | Allocations: 6530)
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:43:45 +0800
+Started GET "/css/style.css" for 127.0.0.1 at 2022-08-12 19:43:45 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/css/style.css"):
+  
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:43:56 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 2061)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 4677)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.1ms | Allocations: 5926)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:43:57 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1287)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 3514)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.1ms | Allocations: 3946)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:44:58 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 2071)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 4677)
+Completed 200 OK in 16ms (Views: 12.4ms | ActiveRecord: 0.1ms | Allocations: 5893)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:45:00 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1287)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | Allocations: 3501)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.3ms | Allocations: 3933)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:45:25 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2054)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 4660)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.1ms | Allocations: 5876)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:45:32 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 2062)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 4668)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.1ms | Allocations: 5922)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:45:58 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2075)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 4681)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.1ms | Allocations: 5935)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:45:58 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1293)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 3507)
+Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 0.3ms | Allocations: 3939)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:46:18 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 6.9ms | Allocations: 2072)
+  Rendered layout layouts/application.html.erb (Duration: 11.3ms | Allocations: 4678)
+Completed 200 OK in 18ms (Views: 15.6ms | ActiveRecord: 0.3ms | Allocations: 5895)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:46:25 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 2071)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 4677)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.1ms | Allocations: 5931)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:46:31 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 2062)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 4668)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.1ms | Allocations: 5922)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:46:33 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1281)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 3495)
+Completed 200 OK in 13ms (Views: 11.1ms | ActiveRecord: 0.2ms | Allocations: 3927)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:46:41 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 2074)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 4680)
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.3ms | Allocations: 5896)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:46:47 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 2065)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 4671)
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 0.2ms | Allocations: 5925)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:46:48 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1275)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 3489)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 0.2ms | Allocations: 3921)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:47:10 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2074)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 4680)
+Completed 200 OK in 11ms (Views: 9.5ms | ActiveRecord: 0.2ms | Allocations: 5896)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:47:48 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2079)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 4685)
+Completed 200 OK in 16ms (Views: 12.7ms | ActiveRecord: 0.4ms | Allocations: 5939)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:47:55 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2061)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 4667)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.1ms | Allocations: 5921)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:48:03 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 2073)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 4679)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.1ms | Allocations: 5933)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:48:11 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 2077)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 4683)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.1ms | Allocations: 5937)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:48:21 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 2077)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 4683)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.7ms | Allocations: 5937)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:48:22 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1287)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 3501)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.2ms | Allocations: 3933)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:48:33 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 2079)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 4685)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.1ms | Allocations: 5901)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:48:45 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 2067)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 4673)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.1ms | Allocations: 5927)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:49:11 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2070)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 4687)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.1ms | Allocations: 5941)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:49:20 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 2094)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 4705)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.1ms | Allocations: 5960)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:49:30 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 2079)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 4685)
+Completed 200 OK in 13ms (Views: 10.8ms | ActiveRecord: 0.3ms | Allocations: 5939)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:49:37 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 2072)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 4678)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.1ms | Allocations: 5932)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:50:10 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 2076)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 4682)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.1ms | Allocations: 5936)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:50:16 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 2084)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 4690)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.1ms | Allocations: 5944)
+
+
+Started GET "/recipes/?id=&commit=Search" for 127.0.0.1 at 2022-08-12 19:51:01 +0800
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"", "commit"=>"Search"}
+[31mUnpermitted parameters: :id, :commit. Context: { controller: RecipesController, action: show, request: #<ActionDispatch::Request:0x00000001186b04e0>, params: {"id"=>"", "commit"=>"Search", "controller"=>"recipes", "action"=>"show"} }[0m
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:16:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.erb within layouts/application
+  Rendered recipes/show.html.erb within layouts/application (Duration: 2.0ms | Allocations: 263)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 2652)
+Completed 200 OK in 11ms (Views: 7.3ms | ActiveRecord: 0.3ms | Allocations: 3836)
+
+
+Started GET "/recipes/css/bootstrap.min.css" for 127.0.0.1 at 2022-08-12 19:51:01 +0800
+Started GET "/recipes/css/style.css" for 127.0.0.1 at 2022-08-12 19:51:01 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/bootstrap.min.css"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/recipes/css/style.css"):
+  
+Started POST "/recipes/new" for 127.0.0.1 at 2022-08-12 19:51:08 +0800
+Processing by RecipesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "title"=>"title", "content"=>"test", "commit"=>"Upload"}
+[31mUnpermitted parameters: :authenticity_token, :commit. Context: { controller: RecipesController, action: create, request: #<ActionDispatch::Request:0x000000012b369af8>, params: {"authenticity_token"=>"[FILTERED]", "title"=>"title", "content"=>"test", "commit"=>"Upload", "controller"=>"recipes", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:11:in `create'
+  [1m[36mRecipe Create (0.7ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "title"], ["content", "test"], ["created_at", "2022-08-12 11:51:08.837268"], ["updated_at", "2022-08-12 11:51:08.837268"]]
+  ↳ app/controllers/recipes_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:11:in `create'
+No template found for RecipesController#create, rendering head :no_content
+Completed 204 No Content in 8ms (ActiveRecord: 1.6ms | Allocations: 3818)
+
+
+Started POST "/recipes/new" for 127.0.0.1 at 2022-08-12 19:51:09 +0800
+Processing by RecipesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "title"=>"title", "content"=>"test", "commit"=>"Upload"}
+[31mUnpermitted parameters: :authenticity_token, :commit. Context: { controller: RecipesController, action: create, request: #<ActionDispatch::Request:0x000000011f042ca0>, params: {"authenticity_token"=>"[FILTERED]", "title"=>"title", "content"=>"test", "commit"=>"Upload", "controller"=>"recipes", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:11:in `create'
+  [1m[36mRecipe Create (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "title"], ["content", "test"], ["created_at", "2022-08-12 11:51:09.038105"], ["updated_at", "2022-08-12 11:51:09.038105"]]
+  ↳ app/controllers/recipes_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:11:in `create'
+No template found for RecipesController#create, rendering head :no_content
+Completed 204 No Content in 5ms (ActiveRecord: 1.2ms | Allocations: 2290)
+
+
+Started POST "/recipes/new" for 127.0.0.1 at 2022-08-12 19:51:10 +0800
+Processing by RecipesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "title"=>"title", "content"=>"test", "commit"=>"Upload"}
+[31mUnpermitted parameters: :authenticity_token, :commit. Context: { controller: RecipesController, action: create, request: #<ActionDispatch::Request:0x000000011801dc40>, params: {"authenticity_token"=>"[FILTERED]", "title"=>"title", "content"=>"test", "commit"=>"Upload", "controller"=>"recipes", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/recipes_controller.rb:11:in `create'
+  [1m[36mRecipe Create (0.7ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "title"], ["content", "test"], ["created_at", "2022-08-12 11:51:10.327548"], ["updated_at", "2022-08-12 11:51:10.327548"]]
+  ↳ app/controllers/recipes_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/recipes_controller.rb:11:in `create'
+No template found for RecipesController#create, rendering head :no_content
+Completed 204 No Content in 9ms (ActiveRecord: 2.0ms | Allocations: 2296)
+
+
+Started GET "/" for 127.0.0.1 at 2022-08-12 19:51:14 +0800
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."created_at" DESC[0m
+  ↳ app/views/recipes/index.html.erb:41
+  Rendered recipes/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1404)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 3732)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.3ms | Allocations: 4183)
+
+
